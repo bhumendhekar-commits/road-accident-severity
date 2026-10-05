@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>RoadGuard AI | Accident Severity Prediction</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="page">
+
+    <!-- HEADER -->
+    <header class="header">
+
+        <div class="brand">
+            <div class="brand-icon">🚗</div>
+
+            <div>
+                <h2>RoadGuard <span>AI</span></h2>
+                <p>Accident Intelligence System</p>
+            </div>
+        </div>
+
+        <div class="status">
+            <span class="status-dot"></span>
+            AI Model Online
+        </div>
+
+    </header>
+
+
+    <!-- HERO -->
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <div class="badge">
+                🤖 MACHINE LEARNING POWERED
+            </div>
+
+            <h1>
+                Road Accident
+                <span>Severity Prediction</span>
+            </h1>
+
+            <p>
+                Analyze accident conditions and predict whether
+                the accident is <b>Minor, Serious, or Severe</b>
+                using Machine Learning.
+            </p>
+
+            <div class="hero-stats">
+
+                <div>
+                    <strong>3</strong>
+                    <small>Severity Classes</small>
+                </div>
+
+                <div>
+                    <strong>13</strong>
+                    <small>Input Features</small>
+                </div>
+
+                <div>
+                    <strong>AI</strong>
+                    <small>Prediction Engine</small>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="hero-visual">
+            <div class="road">
+                <div class="road-line"></div>
+                <div class="car">🚗</div>
+            </div>
+        </div>
+
+    </section>
+
+
+    <!-- MAIN CARD -->
+    <main class="main-card">
+
+        <div class="section-heading">
+
+            <div>
+                <h2>🚦 Accident Information</h2>
+                <p>Enter the accident details below</p>
+            </div>
+
+            <div class="step">
+                STEP 1 / 2
+            </div>
+
+        </div>
+
+
+        <form id="predictionForm">
+
+            <!-- DRIVER -->
+            <div class="form-section">
+
+                <h3>👤 Driver Information</h3>
+
+                <div class="form-grid">
+
+                    <div class="input-group">
+                        <label>Age Band</label>
+
+                        <select id="Age_band_of_driver">
+                            <option>Under 18</option>
+                            <option>18-30</option>
+                            <option>31-50</option>
+                            <option>Over 51</option>
+                            <option>Unknown</option>
+                        </select>
+                    </div>
+
+
+                    <div class="input-group">
+                        <label>Sex</label>
+
+                        <select id="Sex_of_driver">
+                            <option>Male</option>
+                            <option>Female</option>
+                            <option>Unknown</option>
+                        </select>
+                    </div>
+
+
+                    <div class="input-group">
+                        <label>Driving Experience</label>
+
+                        <select id="Driving_experience">
+                            <option>Below 1yr</option>
+                            <option>1-2yr</option>
+                            <option>2-5yr</option>
+                            <option>5-10yr</option>
+                            <option>Above 10yr</option>
+                            <option>No Licence</option>
+                            <option>Unknown</option>
+                        </select>
+                    </div>
+
+
+                    <div class="input-group">
+                        <label>Vehicle Type</label>
+
+                        <select id="Type_of_vehicle">
+                            <option>Automobile</option>
+                            <option>Lorry</option>
+                            <option>Public (> 45 seats)</option>
+                            <option>Public (13-45 seats)</option>
+                            <option>Taxi</option>
+                            <option>Motorcycle</option>
+                            <option>Pick up upto 10Q</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ROAD -->
+            <div class="form-section">
+
+                <h3>🛣️ Road & Environment</h3>
+
+                <div class="form-grid">
+
+                    <div class="input-group">
+                        <label>Accident Area</label>
+
+                        <select id="Area_accident_occured">
+                            <option>Residential areas</option>
+                            <option>Office areas</option>
+                            <option>Industrial areas</option>
+                            <option>Other</option>
+                            <option>Rural village areas</option>
+                            <option>Market areas</option>
+                            <option>Hospital areas</option>
+                            <option>Church areas</option>
+                        </select>
+                    </div>
+
+
+                    <div class="input-group">
+                        <label>Road Surface</label>
+
+                        <select id="Road_surface_type">
+                            <option>Asphalt roads</option>
+                            <option>Earth roads</option>
+                            <option>Gravel roads</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+
+
+                    <div class="input-group">
+                        <label>Surface Condition</label>
+
+                        <select id="Road_surface_conditions">
+                            <option>Dry</option>
+                            <option>Wet or damp</option>
+                            <option>Snow</option>
+                            <option>Flood over 3cm. deep</option>
+                        </select>
+                    </div>
+
+
+                    <div class="input-group">
+                        <label>Light Condition</label>
+
+                        <select id="Light_conditions">
+                            <option>Daylight</option>
+                            <option>Darkness - lights lit</option>
+                            <option>Darkness - lights unlit</option>
+                            <option>Darkness - no lighting</option>
+                        </select>
+                    </div>
+
+
+                    <div class="input-group">
+                        <label>Weather</label>
+
+                        <select id="Weather_conditions">
+                            <option>Normal</option>
+                            <option>Raining</option>
+                            <option>Raining and Windy</option>
+                            <option>Fog or mist</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+
+
+                    <div class="input-group">
+                        <label>Collision Type</label>
+
+                        <select id="Type_of_collision">
+                            <option>Vehicle with vehicle collision</option>
+                            <option>Collision with roadside objects</option>
+                            <option>Collision with pedestrians</option>
+                            <option>Rollover</option>
+                            <option>Collision with animals</option>
+                            <option>Collision with roadside-parked vehicles</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ACCIDENT -->
+            <div class="form-section">
+
+                <h3>⚠️ Accident Details</h3>
+
+                <div class="form-grid">
+
+                    <div class="input-group">
+                        <label>Vehicles Involved</label>
+
+                        <input
+                            type="number"
+                            id="Number_of_vehicles_involved"
+                            min="1"
+                            max="6"
+                            value="2"
+                            required>
+                    </div>
+
+
+                    <div class="input-group">
+                        <label>Number of Casualties</label>
+
+                        <input
+                            type="number"
+                            id="Number_of_casualties"
+                            min="1"
+                            max="8"
+                            value="1"
+                            required>
+                    </div>
+
+
+                    <div class="input-group full">
+
+                        <label>Cause of Accident</label>
+
+                        <select id="Cause_of_accident">
+                            <option>No distancing</option>
+                            <option>Driving carelessly</option>
+                            <option>Driving at high speed</option>
+                            <option>Overtaking</option>
+                            <option>No priority to vehicle</option>
+                            <option>No priority to pedestrian</option>
+                            <option>Changing lane to the right</option>
+                            <option>Changing lane to the left</option>
+                            <option>Overloading</option>
+                            <option>Other</option>
+                        </select>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- BUTTON -->
+            <button type="submit" class="predict-btn">
+
+                <span>🔮</span>
+
+                Predict Accident Severity
+
+                <span class="arrow">→</span>
+
+            </button>
+
+        </form>
+
+
+        <!-- RESULT -->
+        <div id="result" class="result">
+
+            <div class="result-header">
+
+                <div>
+                    <p class="result-label">AI PREDICTION</p>
+
+                    <h2 id="predictionText">
+                        Prediction
+                    </h2>
+                </div>
+
+                <div class="result-icon">
+                    🤖
+                </div>
+
+            </div>
+
+
+            <div class="probabilities">
+
+                <!-- MINOR -->
+                <div class="probability-card minor">
+
+                    <div class="probability-top">
+                        <span>🟢 Minor</span>
+                        <strong id="minorProbability">0%</strong>
+                    </div>
+
+                    <div class="progress">
+                        <div id="minorBar"></div>
+                    </div>
+
+                </div>
+
+
+                <!-- SERIOUS -->
+                <div class="probability-card serious">
+
+                    <div class="probability-top">
+                        <span>🟠 Serious</span>
+                        <strong id="seriousProbability">0%</strong>
+                    </div>
+
+                    <div class="progress">
+                        <div id="seriousBar"></div>
+                    </div>
+
+                </div>
+
+
+                <!-- SEVERE -->
+                <div class="probability-card severe">
+
+                    <div class="probability-top">
+                        <span>🔴 Severe</span>
+                        <strong id="severeProbability">0%</strong>
+                    </div>
+
+                    <div class="progress">
+                        <div id="severeBar"></div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <p>
+            🚗 RoadGuard AI &nbsp; • &nbsp;
+            Machine Learning Accident Severity Prediction
+        </p>
+
+        <span>
+            Built with Python • Flask • Scikit-learn
+        </span>
+
+    </footer>
+
+</div>
+
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
